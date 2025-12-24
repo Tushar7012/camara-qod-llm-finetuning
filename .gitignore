@@ -1,0 +1,55 @@
+# Model checkpoints (too large for GitHub)
+camara_qod_final_model/
+camara_qod_lora_model/
+camara_qod_dpo_model/
+camara_qod_model/
+*.safetensors
+*.bin
+*.pth
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Development helper scripts
+fix_*.py
+test_cuda.py
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
