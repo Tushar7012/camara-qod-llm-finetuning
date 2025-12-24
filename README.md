@@ -48,6 +48,63 @@ pip install unsloth transformers datasets trl peft accelerate bitsandbytes
 python -c "from camara_qod_finetuning import train_model; train_model()"
 ```
 
+## 🔄 Project Workflow
+
+This project follows a systematic workflow from data preparation to model deployment:
+
+```mermaid
+flowchart TD
+    subgraph "Phase 1: Data Preparation"
+        A[CAMARA API<br/>Specification] --> B[Manual Dataset<br/>Curation]
+        B --> C[SFT Dataset<br/>50 examples]
+        B --> D[Preference Dataset<br/>30 pairs]
+    end
+    
+    subgraph "Phase 2: SFT Training"
+        C --> E[Load Phi-3-Mini<br/>Base Model]
+        E --> F[Apply QLoRA<br/>4-bit Quantization]
+        F --> G[SFT Training<br/>3 epochs]
+        G --> H[SFT Checkpoint<br/>80% JSON Validity]
+    end
+    
+    subgraph "Phase 3: DPO Alignment"
+        H --> I[Clone as<br/>Reference Model]
+        I --> J[DPO Training]
+        D --> J
+        J --> K[Final Model<br/>100% Spec Compliant]
+    end
+    
+    subgraph "Phase 4: Evaluation"
+        K --> L[Test on<br/>Queries]
+        L --> M[Validate JSON<br/>& Fields]
+        M --> N[Performance<br/>Report]
+    end
+    
+    subgraph "Phase 5: Deployment"
+        K --> O[Save Model<br/>Checkpoint]
+        O --> P[HuggingFace Hub /<br/>Local Hosting]
+    end
+    
+    style C fill:#bbdefb
+    style D fill:#bbdefb
+    style H fill:#fff9c4
+    style K fill:#c8e6c9
+    style N fill:#ffccbc
+    style P fill:#e1bee7
+```
+
+### Workflow Steps
+
+1. **Data Preparation** - Curate high-quality datasets from CAMARA specification
+2. **SFT Training** - Teach model API structure (3 epochs, ~18 min)
+3. **DPO Training** - Eliminate hallucinations via preference learning (1 epoch, ~8 min)
+4. **Evaluation** - Validate JSON validity and spec compliance
+5. **Deployment** - Save and host the fine-tuned model
+
+**Total Training Time:** ~26 minutes on T4 GPU
+
+---
+
 ## 📚 Dataset Description
 
 ### SFT Dataset (`sft_dataset.jsonl`)
