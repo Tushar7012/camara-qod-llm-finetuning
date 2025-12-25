@@ -1,7 +1,5 @@
 # CAMARA QoD API Fine-tuning Assignment
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/your-username/your-repo/blob/main/camara_qod_finetuning.ipynb)
-
 Fine-tuning a small language model (Phi-3-Mini-4K-Instruct) to act as an expert assistant for the **CAMARA Quality on Demand (QoD) API** using Supervised Fine-Tuning (SFT) with QLoRA and Direct Preference Optimization (DPO).
 
 ## Objective
