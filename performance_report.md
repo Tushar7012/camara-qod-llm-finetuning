@@ -5,10 +5,10 @@
 This report demonstrates the effectiveness of fine-tuning Phi-3-Mini-4K-Instruct on the CAMARA Quality on Demand (QoD) API using supervised fine-tuning (SFT) with QLoRA and subsequent alignment using Direct Preference Optimization (DPO).
 
 **Key Results:**
-- ✅ **100% JSON validity** after fine-tuning (vs ~20% before)
-- ✅ **100% spec compliance** for required CAMARA fields
-- ✅ **Eliminated hallucinations** of non-existent API parameters
-- ✅ **2x faster training** using Unsloth optimization
+- **100% JSON validity** after fine-tuning (vs ~20% before)
+- **100% spec compliance** for required CAMARA fields
+- **Eliminated hallucinations** of non-existent API parameters
+- **2x faster training** using Unsloth optimization
 
 ---
 
@@ -62,31 +62,31 @@ The network will allocate resources to improve your connection quality.
 ```
 
 **Analysis:**
-- ❌ No API call generated
-- ❌ Generic advice instead of structured output
-- ❌ Missing all CAMARA-specific fields
+- No API call generated
+- Generic advice instead of structured output
+- Missing all CAMARA-specific fields
 
 #### After Fine-tuning (SFT + DPO)
 
 ```json
 {
-  "device": {
-    "phoneNumber": "+14155551234"
-  },
-  "applicationServer": {
-    "ipv4Address": "198.51.100.50"
-  },
-  "qosProfile": "QOS_S",
-  "duration": 7200
+ "device": {
+ "phoneNumber": "+14155551234"
+ },
+ "applicationServer": {
+ "ipv4Address": "198.51.100.50"
+ },
+ "qosProfile": "QOS_S",
+ "duration": 7200
 }
 ```
 
 **Analysis:**
-- ✅ Valid JSON structure
-- ✅ Correct CAMARA fields
-- ✅ Appropriate QoS profile (QOS_S for streaming)
-- ✅ Correct duration calculation (2 hours = 7200 seconds)
-- ✅ Proper device identifier format (phoneNumber)
+- Valid JSON structure
+- Correct CAMARA fields
+- Appropriate QoS profile (QOS_S for streaming)
+- Correct duration calculation (2 hours = 7200 seconds)
+- Proper device identifier format (phoneNumber)
 
 ---
 
@@ -113,32 +113,32 @@ Parameters needed:
 ```
 
 **Analysis:**
-- ❌ No structured API output
-- ❌ Generic gaming advice
-- ❌ Parameters listed but not formatted as API call
+- No structured API output
+- Generic gaming advice
+- Parameters listed but not formatted as API call
 
 #### After Fine-tuning
 
 ```json
 {
-  "device": {
-    "ipv4Address": {
-      "publicAddress": "203.0.113.75"
-    }
-  },
-  "applicationServer": {
-    "ipv4Address": "192.0.2.200"
-  },
-  "qosProfile": "QOS_E",
-  "duration": 10800
+ "device": {
+ "ipv4Address": {
+ "publicAddress": "203.0.113.75"
+ }
+ },
+ "applicationServer": {
+ "ipv4Address": "192.0.2.200"
+ },
+ "qosProfile": "QOS_E",
+ "duration": 10800
 }
 ```
 
 **Analysis:**
-- ✅ Perfect CAMARA structure
-- ✅ Correct QoS profile (QOS_E for enhanced/gaming)
-- ✅ Proper IPv4 nested structure
-- ✅ Accurate duration (3 hours = 10800 seconds)
+- Perfect CAMARA structure
+- Correct QoS profile (QOS_E for enhanced/gaming)
+- Proper IPv4 nested structure
+- Accurate duration (3 hours = 10800 seconds)
 
 ---
 
@@ -154,40 +154,40 @@ need reliable connection for 15 minutes.
 
 ```json
 {
-  "sensor_id": "+12025551111",
-  "endpoint": "10.0.0.100",
-  "connection_type": "reliable",
-  "duration_minutes": 15,
-  "protocol": "MQTT"
+ "sensor_id": "+12025551111",
+ "endpoint": "10.0.0.100",
+ "connection_type": "reliable",
+ "duration_minutes": 15,
+ "protocol": "MQTT"
 }
 ```
 
 **Analysis:**
-- ⚠️ Valid JSON but wrong structure
-- ❌ Hallucinated fields: `sensor_id`, `connection_type`, `protocol`
-- ❌ Wrong field names (not CAMARA compliant)
-- ❌ Duration in minutes instead of seconds
+- Valid JSON but wrong structure
+- Hallucinated fields: `sensor_id`, `connection_type`, `protocol`
+- Wrong field names (not CAMARA compliant)
+- Duration in minutes instead of seconds
 
 #### After Fine-tuning
 
 ```json
 {
-  "device": {
-    "phoneNumber": "+12025551111"
-  },
-  "applicationServer": {
-    "ipv4Address": "10.0.0.100"
-  },
-  "qosProfile": "QOS_M",
-  "duration": 900
+ "device": {
+ "phoneNumber": "+12025551111"
+ },
+ "applicationServer": {
+ "ipv4Address": "10.0.0.100"
+ },
+ "qosProfile": "QOS_M",
+ "duration": 900
 }
 ```
 
 **Analysis:**
-- ✅ Exact CAMARA specification
-- ✅ Correct QoS profile (QOS_M for mission-critical IoT)
-- ✅ No hallucinated fields
-- ✅ Correct duration (15 minutes = 900 seconds)
+- Exact CAMARA specification
+- Correct QoS profile (QOS_M for mission-critical IoT)
+- No hallucinated fields
+- Correct duration (15 minutes = 900 seconds)
 
 ---
 
@@ -202,40 +202,40 @@ Video conference with IPv6 2001:db8::1 to server 2001:db8:1234::1 for 45 minutes
 
 ```
 {
-  "client": "2001:db8::1",
-  "server": "2001:db8:1234::1",
-  "session_type": "video_conference",
-  "time": "45min",
-  "quality": "HD"
+ "client": "2001:db8::1",
+ "server": "2001:db8:1234::1",
+ "session_type": "video_conference",
+ "time": "45min",
+ "quality": "HD"
 }
 ```
 
 **Analysis:**
-- ❌ Wrong field names
-- ❌ Hallucinated `session_type`, `quality` fields
-- ❌ Duration as string "45min" instead of seconds
-- ❌ Not CAMARA compliant
+- Wrong field names
+- Hallucinated `session_type`, `quality` fields
+- Duration as string "45min" instead of seconds
+- Not CAMARA compliant
 
 #### After Fine-tuning
 
 ```json
 {
-  "device": {
-    "ipv6Address": "2001:db8::1"
-  },
-  "applicationServer": {
-    "ipv6Address": "2001:db8:1234::1"
-  },
-  "qosProfile": "QOS_L",
-  "duration": 2700
+ "device": {
+ "ipv6Address": "2001:db8::1"
+ },
+ "applicationServer": {
+ "ipv6Address": "2001:db8:1234::1"
+ },
+ "qosProfile": "QOS_L",
+ "duration": 2700
 }
 ```
 
 **Analysis:**
-- ✅ Perfect IPv6 handling
-- ✅ Correct QoS profile (QOS_L for live/interactive)
-- ✅ Spec-compliant structure
-- ✅ Correct duration (45 minutes = 2700 seconds)
+- Perfect IPv6 handling
+- Correct QoS profile (QOS_L for live/interactive)
+- Spec-compliant structure
+- Correct duration (45 minutes = 2700 seconds)
 
 ---
 
@@ -282,9 +282,9 @@ Video conference with IPv6 2001:db8::1 to server 2001:db8:1234::1 for 45 minutes
 - Wrong duration formats (`duration_minutes`, `hours`)
 
 **After DPO:**
-- ✅ Zero hallucinated fields
-- ✅ Only spec-defined parameters used
-- ✅ Consistent field naming
+- Zero hallucinated fields
+- Only spec-defined parameters used
+- Consistent field naming
 
 ### Preference Alignment
 
@@ -303,13 +303,13 @@ The DPO training successfully taught the model to:
 ### Remaining Limitations
 
 1. **Port specification:** Model doesn't automatically add ports unless specifically mentioned
-   - Mitigation: Include more port-specific examples in training data
+ - Mitigation: Include more port-specific examples in training data
 
 2. **Port ranges:** Less confident with range syntax
-   - Mitigation: Add more examples with `from`/`to` range notation
+ - Mitigation: Add more examples with `from`/`to` range notation
 
 3. **Edge cases:** Uncommon device identifier combinations
-   - Mitigation: Expand dataset to cover edge cases
+ - Mitigation: Expand dataset to cover edge cases
 
 ### False Positives (Pre-DPO)
 
@@ -345,19 +345,19 @@ The model occasionally generated plausible but incorrect fields:
 ### Model Checkpoints
 
 1. **SFT Checkpoint** (`camara_qod_lora_model/`)
-   - LoRA adapters: 25M parameters
-   - Merge with base model for deployment
-   - Good for general CAMARA queries
+ - LoRA adapters: 25M parameters
+ - Merge with base model for deployment
+ - Good for general CAMARA queries
 
 2. **DPO Checkpoint** (`camara_qod_dpo_model/`)
-   - Further refined LoRA adapters
-   - **Recommended for production**
-   - Zero hallucination tolerance
+ - Further refined LoRA adapters
+ - **Recommended for production**
+ - Zero hallucination tolerance
 
 3. **Merged Model** (`camara_qod_merged_model/`)
-   - Standalone deployable model
-   - No LoRA dependencies
-   - Ready for inference APIs
+ - Standalone deployable model
+ - No LoRA dependencies
+ - Ready for inference APIs
 
 ### Inference Performance
 
@@ -373,11 +373,11 @@ The model occasionally generated plausible but incorrect fields:
 
 ### Key Achievements
 
-1. ✅ **Perfect spec compliance** after DPO alignment
-2. ✅ **Zero hallucinations** of non-existent fields
-3. ✅ **100% JSON validity** on all test queries
-4. ✅ **Efficient training** (26 minutes total on free hardware)
-5. ✅ **Production-ready** model with multiple deployment options
+1. **Perfect spec compliance** after DPO alignment
+2. **Zero hallucinations** of non-existent fields
+3. **100% JSON validity** on all test queries
+4. **Efficient training** (26 minutes total on free hardware)
+5. **Production-ready** model with multiple deployment options
 
 ### Lessons Learned
 

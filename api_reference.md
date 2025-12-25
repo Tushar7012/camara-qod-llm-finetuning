@@ -14,43 +14,43 @@ Creates a QoS session to request stable latency or throughput for application da
 
 ```json
 {
-  "device": {
-    "ipv4Address": {
-      "publicAddress": "string",
-      "publicPort": 0
-    },
-    "ipv6Address": "string",
-    "phoneNumber": "string"
-  },
-  "applicationServer": {
-    "ipv4Address": "string",
-    "ipv6Address": "string"
-  },
-  "qosProfile": "string",
-  "devicePorts": {
-    "ports": [0],
-    "ranges": [
-      {
-        "from": 0,
-        "to": 0
-      }
-    ]
-  },
-  "applicationServerPorts": {
-    "ports": [0],
-    "ranges": [
-      {
-        "from": 0,
-        "to": 0
-      }
-    ]
-  },
-  "duration": 0,
-  "sink": "string",
-  "sinkCredential": {
-    "credentialType": "ACCESSTOKEN",
-    "accessToken": "string"
-  }
+ "device": {
+ "ipv4Address": {
+ "publicAddress": "string",
+ "publicPort": 0
+ },
+ "ipv6Address": "string",
+ "phoneNumber": "string"
+ },
+ "applicationServer": {
+ "ipv4Address": "string",
+ "ipv6Address": "string"
+ },
+ "qosProfile": "string",
+ "devicePorts": {
+ "ports": [0],
+ "ranges": [
+ {
+ "from": 0,
+ "to": 0
+ }
+ ]
+ },
+ "applicationServerPorts": {
+ "ports": [0],
+ "ranges": [
+ {
+ "from": 0,
+ "to": 0
+ }
+ ]
+ },
+ "duration": 0,
+ "sink": "string",
+ "sinkCredential": {
+ "credentialType": "ACCESSTOKEN",
+ "accessToken": "string"
+ }
 }
 ```
 
@@ -73,24 +73,24 @@ Creates a QoS session to request stable latency or throughput for application da
 ### IPv4 Address
 ```json
 {
-  "ipv4Address": {
-    "publicAddress": "192.168.1.100",
-    "publicPort": 5060
-  }
+ "ipv4Address": {
+ "publicAddress": "192.168.1.100",
+ "publicPort": 5060
+ }
 }
 ```
 
 ### IPv6 Address
 ```json
 {
-  "ipv6Address": "2001:db8::1"
+ "ipv6Address": "2001:db8::1"
 }
 ```
 
 ### Phone Number (MSISDN)
 ```json
 {
-  "phoneNumber": "+14155550123"
+ "phoneNumber": "+14155550123"
 }
 ```
 
@@ -99,31 +99,31 @@ Creates a QoS session to request stable latency or throughput for application da
 ### QOS_E (Enhanced)
 - **Use Case**: Low-latency applications (gaming, VR, autonomous vehicles)
 - **Characteristics**: 
-  - Very low latency
-  - Minimal jitter
-  - High priority
-  - Suitable for real-time interactive applications
+ - Very low latency
+ - Minimal jitter
+ - High priority
+ - Suitable for real-time interactive applications
 
 ### QOS_S (Streaming)
 - **Use Case**: Live video streaming, video calls
 - **Characteristics**:
-  - Optimized for consistent throughput
-  - Good balance of latency and bandwidth
-  - Suitable for 4K/HD streaming
+ - Optimized for consistent throughput
+ - Good balance of latency and bandwidth
+ - Suitable for 4K/HD streaming
 
 ### QOS_M (Mission Critical)
 - **Use Case**: IoT sensors, critical communications
 - **Characteristics**:
-  - Reliable delivery
-  - Guaranteed minimum throughput
-  - Suitable for industrial IoT
+ - Reliable delivery
+ - Guaranteed minimum throughput
+ - Suitable for industrial IoT
 
 ### QOS_L (Live)
 - **Use Case**: Video conferencing, cloud gaming
 - **Characteristics**:
-  - Low latency for interactive media
-  - Bi-directional optimization
-  - Packet loss minimization
+ - Low latency for interactive media
+ - Bi-directional optimization
+ - Packet loss minimization
 
 ## Profile Parameters
 
@@ -146,53 +146,53 @@ Each QoS profile can include:
 ### Gaming Session
 ```json
 {
-  "device": {
-    "ipv4Address": {
-      "publicAddress": "203.0.113.45"
-    }
-  },
-  "applicationServer": {
-    "ipv4Address": "198.51.100.10"
-  },
-  "qosProfile": "QOS_E",
-  "devicePorts": {
-    "ports": [7777]
-  },
-  "applicationServerPorts": {
-    "ports": [7777]
-  },
-  "duration": 3600
+ "device": {
+ "ipv4Address": {
+ "publicAddress": "203.0.113.45"
+ }
+ },
+ "applicationServer": {
+ "ipv4Address": "198.51.100.10"
+ },
+ "qosProfile": "QOS_E",
+ "devicePorts": {
+ "ports": [7777]
+ },
+ "applicationServerPorts": {
+ "ports": [7777]
+ },
+ "duration": 3600
 }
 ```
 
 ### 4K Video Streaming
 ```json
 {
-  "device": {
-    "phoneNumber": "+14155551234"
-  },
-  "applicationServer": {
-    "ipv4Address": "192.0.2.100"
-  },
-  "qosProfile": "QOS_S",
-  "applicationServerPorts": {
-    "ports": [443]
-  },
-  "duration": 7200
+ "device": {
+ "phoneNumber": "+14155551234"
+ },
+ "applicationServer": {
+ "ipv4Address": "192.0.2.100"
+ },
+ "qosProfile": "QOS_S",
+ "applicationServerPorts": {
+ "ports": [443]
+ },
+ "duration": 7200
 }
 ```
 
 ### IoT Sensor Upload
 ```json
 {
-  "device": {
-    "ipv6Address": "2001:db8:85a3::8a2e:370:7334"
-  },
-  "applicationServer": {
-    "ipv6Address": "2001:db8:1234::1"
-  },
-  "qosProfile": "QOS_M",
-  "duration": 900
+ "device": {
+ "ipv6Address": "2001:db8:85a3::8a2e:370:7334"
+ },
+ "applicationServer": {
+ "ipv6Address": "2001:db8:1234::1"
+ },
+ "qosProfile": "QOS_M",
+ "duration": 900
 }
 ```
 
