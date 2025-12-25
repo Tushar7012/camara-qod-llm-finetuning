@@ -237,10 +237,10 @@ def evaluate_dpo_model(model_path, test_queries):
  print("\n=== DPO Model Evaluation ===\n")
  
  for i, query in enumerate(test_queries, 1):
- print(f"Query {i}: {query}")
+    print(f"Query {i}: {query}")
  
- # Format prompt
- prompt = f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+    # Format prompt
+    prompt = f"""Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
 ### Instruction:
 You are an expert assistant for the CAMARA Quality on Demand (QoD) API. Convert user requests into valid API calls.
@@ -251,28 +251,28 @@ You are an expert assistant for the CAMARA Quality on Demand (QoD) API. Convert 
 ### Response:
 """
  
- # Generate
- inputs = tokenizer([prompt], return_tensors="pt").to("cuda")
- outputs = model.generate(**inputs, max_new_tokens=512, temperature=0.3)
- response = tokenizer.decode(outputs[0], skip_special_tokens=True)
- result = response.split("### Response:")[-1].strip()
+    # Generate
+    inputs = tokenizer([prompt], return_tensors="pt").to("cuda")
+    outputs = model.generate(**inputs, max_new_tokens=512, temperature=0.3)
+    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    result = response.split("### Response:")[-1].strip()
  
- print(f"Response:\n{result}\n")
+    print(f"Response:\n{result}\n")
  
- # Validate JSON
- try:
- json_obj = json.loads(result)
- required_fields = ["device", "applicationServer", "qosProfile", "duration"]
- has_all_fields = all(f in json_obj for f in required_fields)
- 
- if has_all_fields:
- print(" Valid CAMARA structure\n")
- else:
- print(" Missing required fields\n")
- except:
- print(" Invalid JSON\n")
- 
- print("-" * 80 + "\n")
+    # Validate JSON
+    try:
+        json_obj = json.loads(result)
+        required_fields = ["device", "applicationServer", "qosProfile", "duration"]
+        has_all_fields = all(f in json_obj for f in required_fields)
+        
+        if has_all_fields:
+            print(" Valid CAMARA structure\n")
+        else:
+            print(" Missing required fields\n")
+    except:
+        print(" Invalid JSON\n")
+    
+    print("-" * 80 + "\n")
 
 # =============================================================================
 # Pseudocode for DPO Algorithm
